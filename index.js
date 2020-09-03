@@ -12,7 +12,10 @@ const fetchMovies = async (searchTerm) => {
 
 const inputMovie = document.querySelector('input');
 
-let timingID
+
+/* 
+// Old version 
+let timingID;
 const inputFunc = (event) =>{
     if(timingID) {
         clearInterval(timingID);
@@ -21,5 +24,24 @@ const inputFunc = (event) =>{
         fetchMovies(event.target.value);
     }, 500);
 }
+ */
 
-inputMovie.addEventListener('input', inputFunc);
+const helperBounce = (func, delay = 1000) => {
+    let timingID;
+    return (...args) => {
+        if(timingID) {
+            clearInterval(timingID);
+        }
+        timingID = setTimeout( () => {
+            func.apply(null, args);
+        }, delay)
+    }
+}
+
+
+const inputFunc = (event) => {
+        fetchMovies(event.target.value);
+}
+
+
+inputMovie.addEventListener('input', helperBounce(inputFunc, 500));
