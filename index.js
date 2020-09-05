@@ -47,14 +47,15 @@ const inputFunc = (event) =>{
 const inputFunc = async (event) =>{
     const movies = await fetchMovies(event.target.value);
     // console.log(movies);
-
+    resultWrapper.innerHTML = '';
     theDropdown.classList.add('is-active');
 
     for (let movie of movies) {
         const options = document.createElement('a');
         options.classList.add('dropdown-item');
+        const imgsrc = movie.Poster === "N/A" ? '' : movie.Poster;
         options.innerHTML = `
-            <img src="${movie.Poster}"/>
+            <img src="${imgsrc}"/>
             ${movie.Title}
         `;
 

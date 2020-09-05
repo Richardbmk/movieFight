@@ -5,7 +5,7 @@ const fetchMovies = async (searchTerm) => {
             s: searchTerm
         }
     });
-    if(response.data.Search){
+    if(response.data.Error){
         return [];
     }
     return response.data.Search;
@@ -13,7 +13,42 @@ const fetchMovies = async (searchTerm) => {
 
 const input = document.querySelector('input');
 
-input.addEventListener('input', (event) => {
-    fetchMovies(event.target.value);
-})
+const bounceHelper = (func, delay = 1000) => {
+    let timingID;
+    return (...args) => {
+        if (timingID) {
+            clearInterval(timingID)
+        }
+        timingID = setTimeout(() => {
+            func.apply(null, args);
+        }, delay)
+    }
+}
+
+
+
+const inputCalback = async (event) => {
+    const movies = await fetchMovies(event.target.value);
+    // console.log(movies)
+
+    for (let movie of movies) {
+        const div = document.createElement('div');
+
+        div.innerHTML = `
+            <img src="${movie.Poster}" />
+            <h1>${movie.Title}</h1>
+        `;
+
+        document.querySelector('#target').appendChild(div);
+    }
+
+
+}
+
+input.addEventListener('input', bounceHelper(inputCalback, 500));
+
+
+
+
+
 
