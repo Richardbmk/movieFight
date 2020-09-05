@@ -27,6 +27,7 @@ const inputFunc = (event) =>{
 }
  */
 
+
 const inputFunc = async (event) =>{
     const movies = await fetchMovies(event.target.value);
     // console.log(movies);
@@ -42,5 +43,6 @@ const inputFunc = async (event) =>{
         document.querySelector('#target').appendChild(div);
     }
 }
+
 
 inputMovie.addEventListener('input', helperBounce(inputFunc, 500));
