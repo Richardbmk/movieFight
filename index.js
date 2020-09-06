@@ -46,7 +46,12 @@ const inputFunc = (event) =>{
 
 const inputFunc = async (event) =>{
     const movies = await fetchMovies(event.target.value);
-    // console.log(movies);
+    // console.log(!movies.length);
+
+    if(!movies.length) {
+        theDropdown.classList.remove('is-active');
+        return;
+    }
     resultWrapper.innerHTML = '';
     theDropdown.classList.add('is-active');
 
@@ -59,9 +64,20 @@ const inputFunc = async (event) =>{
             ${movie.Title}
         `;
 
+        options.addEventListener('click', () => {
+            theDropdown.classList.remove('is-active');
+            inputMovie.value = movie.Title;
+        });
+        
         resultWrapper.appendChild(options);
     }
 }
 
-
 inputMovie.addEventListener('input', helperBounce(inputFunc, 500));
+
+document.addEventListener('click', (event) => {
+    // console.log(event.target);
+    if (!root.contains(event.target)) {
+        theDropdown.classList.remove('is-active');
+    }
+})
