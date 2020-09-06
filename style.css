@@ -1,38 +1,29 @@
-.results {
-    max-height: 500px;
-    overflow-y: scroll;
+.tutorial {
+  width: 600px;
+  text-align: center;
+  margin: auto;
 }
 
-.title .icon {
-    margin-left: 15px;
+figure.image {
+  display: flex;
+  justify-content: center;
+  background-color: black;
 }
 
-.hero {
-    margin-bottom: 20px;
+figure .image img {
+  width: 128px;
 }
 
-.dropdown-item {
-    display: flex;
-    align-items: center;
-    height: 60px;
-}
-
-.dropdown-item img {
-    height: 50px;
-    margin-right: 10px;
-}
-
-
-
-/* 
-
-.results {
-  max-height: 500px;
-  overflow-y: scroll;
+.notification {
+  margin-top: 20px !important;
 }
 
 .title .icon {
   margin-left: 15px;
+}
+
+.hero {
+  margin-bottom: 20px;
 }
 
 .forms {
@@ -40,6 +31,18 @@
   justify-content: space-around;
 }
 
-*/
+.results {
+  max-height: 500px;
+  overflow-y: scroll;
+}
 
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  height: 60px;
+}
 
+.dropdown-item img {
+  height: 50px;
+  margin-right: 10px;
+}
