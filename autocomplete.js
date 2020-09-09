@@ -1,7 +1,14 @@
-const autocompleteCreation = ({ root, showOptions}) => {
+const autocompleteCreation = ({ 
+    root,
+    showOptions,
+    inputValue,
+    optionSelected,
+    fetchMovies,
+    name
+}) => {
         
     root.innerHTML = `
-        <label><b>Search For a Movie</b></label>
+        <label><b>Search for a ${name}</b></label>
         <input class="input"/>
         <div class="dropdown">
             <div class="dropdown-menu">
@@ -16,29 +23,26 @@ const autocompleteCreation = ({ root, showOptions}) => {
 
 
     const inputFunc = async (event) =>{
-        const movies = await fetchMovies(event.target.value);
+        const items = await fetchMovies(event.target.value);
         // console.log(!movies.length);
 
-        if(!movies.length) {
+        if(!items.length) {
             theDropdown.classList.remove('is-active');
             return;
         }
         resultWrapper.innerHTML = '';
         theDropdown.classList.add('is-active');
 
-        for (let movie of movies) {
+        for (let item of items) {
             const options = document.createElement('a');
             options.classList.add('dropdown-item');
-            const imgsrc = movie.Poster === "N/A" ? '' : movie.Poster;
-            options.innerHTML = `
-                <img src="${imgsrc}"/>
-                ${movie.Title}
-            `;
+            
+            options.innerHTML = showOptions(item);
 
             options.addEventListener('click', () => {
                 theDropdown.classList.remove('is-active');
-                inputMovie.value = movie.Title;
-                fetchMovieSelected(movie);
+                inputMovie.value = inputValue(item);
+                optionSelected(item);
             });
 
             resultWrapper.appendChild(options);
