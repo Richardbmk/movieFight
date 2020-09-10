@@ -38,7 +38,7 @@ autocompleteCreation({
     root: document.querySelector('#right-autocomplete'),
     optionSelected: (movie) => {
         document.querySelector('.tutorial').classList.add('is-hidden');
-        fetchMovieSelected(movie, document.querySelector('#right-sumary'), 'right');
+        fetchMovieSelected(movie, document.querySelector('#right-summary'), 'right');
     }, 
 });
 
@@ -68,7 +68,25 @@ const fetchMovieSelected = async (movie, summarySelector, sideMovie) => {
 }
 
 const runCompareFunc = () => {
-    console.log('Is time to make a comparison between the two movies')
+    const leftSide = document.querySelectorAll('#left-summary .notification');
+    const rightSide = document.querySelectorAll('#right-summary .notification');
+
+    leftSide.forEach((leftElement, index) => {
+        const rightElement = rightSide[index];
+
+        leftMovieStats = parseFloat(leftElement.dataset.value);
+        rightMovieStats = parseFloat(rightElement.dataset.value);
+
+        if(leftMovieStats > rightMovieStats) {
+            leftElement.classList.remove('is-warning');
+            leftElement.classList.add('is-success');
+        } else {
+            rightElement.classList.remove('is-warning');
+            rightElement.classList.add('is-success');
+        }
+
+        // console.log(leftElement, rightElement);
+    })
 }
 
 
@@ -90,9 +108,8 @@ const movieInformation = (movieDetail) => {
     }, 0);
 
 
-    console.log(awards);
-
-    console.log(boxOffice, metascore, imbdbRating, imdbVotes);
+    // console.log(awards);
+    // console.log(boxOffice, metascore, imbdbRating, imdbVotes);
     return `
         <article class="media">
             <figure class="media-left">
@@ -112,11 +129,11 @@ const movieInformation = (movieDetail) => {
             <p class="title">${movieDetail.Actors}</p>
             <p class="subtitle">Actors</p>
         </article>
-        <article class="notification is-warning">
+        <article data-value="${awards}" class="notification is-warning">
             <p class="title">${movieDetail.Awards}</p>
             <p class="subtitle">Awards</p>
         </article>
-        <article class="notification is-warning">
+        <article data-value="${boxOffice}" class="notification is-warning">
             <p class="title">${movieDetail.BoxOffice}</p>
             <p class="subtitle">Box Office</p>
         </article>
@@ -124,11 +141,11 @@ const movieInformation = (movieDetail) => {
             <p class="title">${movieDetail.Director}</p>
             <p class="subtitle">Director</p>
         </article>
-        <article class="notification is-warning">
+        <article data-value="${metascore}" class="notification is-warning">
             <p class="title">${movieDetail.Metascore}</p>
             <p class="subtitle">Metascore</p>
         </article>
-        <article class="notification is-warning">
+        <article data-value="${imbdbRating}" class="notification is-warning">
             <p class="title">${movieDetail.imdbRating}</p>
             <p class="subtitle">IMDB Ratings</p>
         </article>
@@ -138,7 +155,7 @@ const movieInformation = (movieDetail) => {
             <p class="title">${movieDetail.Ratings[2].Source}: ${movieDetail.Ratings[2].Value} </p>
             <p class="subtitle">Ratings</p>
         </article>
-        <article class="notification is-warning">
+        <article data-value="${imdbVotes}" class="notification is-warning">
             <p class="title">${movieDetail.imdbVotes}</p>
             <p class="subtitle">IMDB Votes</p>
         </article>
