@@ -4,11 +4,10 @@ const autocompleteCreation = ({
     inputValue,
     optionSelected,
     fetchMovies,
-    name
 }) => {
         
     root.innerHTML = `
-        <label><b>Search for a ${name}</b></label>
+        <label><b>Search </b></label>
         <input class="input"/>
         <div class="dropdown">
             <div class="dropdown-menu">
