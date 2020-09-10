@@ -1,5 +1,4 @@
-autocompleteCreation({
-    root: document.querySelector('#autocomplete'),
+const autocompleteConfig = {
     showOptions: (movie) => {
         const imgsrc = movie.Poster === "N/A" ? '' : movie.Poster;
         return `
@@ -27,6 +26,16 @@ autocompleteCreation({
         return response.data.Search;
     },
     name: 'Movie'
+}
+
+autocompleteCreation({
+    ...autocompleteConfig,
+    root: document.querySelector('#left-autocomplete'),
+});
+
+autocompleteCreation({
+    ...autocompleteConfig,
+    root: document.querySelector('#right-autocomplete'),
 });
 
 
