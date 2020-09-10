@@ -79,17 +79,18 @@ const movieInformation = (movieDetail) => {
     const imdbVotes = parseFloat(movieDetail.imdbVotes);
 
     let count = 0;
-    const awards = movieDetail.Awards.split(' ').forEach(word => {
+    const awards = movieDetail.Awards.split(' ').reduce((prev, word) => {
         const value = parseInt(word);
 
-        if( isNaN(value)) {
-            return;
+        if(isNaN(value)) {
+            return prev;
         } else {
-            count = count + value;
+            return prev + value;
         }
-    });
-    console.log(count);
-    // console.log(awards);
+    }, 0);
+
+
+    console.log(awards);
 
     console.log(boxOffice, metascore, imbdbRating, imdbVotes);
     return `
