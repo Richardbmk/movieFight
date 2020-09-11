@@ -8,10 +8,10 @@ A simple Movie comparison, to see wich movie is better. To do this I use OMDb AP
 * Reduce and forEach method
 * Refactoring and make the code reusable
 * Regex
-* axios library
+* axios library for access the API
 * Use async and await properly
 
-Check the simple app clicking [here](https://richardbmk.github.io/timerAnimation/).
+Check the simple app clicking [here](https://richardbmk.github.io/movieFight/).
 
 
 ![](moviefight.PNG#center)
