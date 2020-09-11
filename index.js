@@ -107,6 +107,11 @@ const movieInformation = (movieDetail) => {
         }
     }, 0);
 
+    const internetDatabase = parseFloat(movieDetail.Ratings[0].Value);
+    const rottenTomatoes = parseFloat(movieDetail.Ratings[1].Value);
+    const metaCritic = parseFloat(movieDetail.Ratings[2].Value);
+    // console.log(internetDatabase);
+
 
     // console.log(awards);
     // console.log(boxOffice, metascore, imbdbRating, imdbVotes);
@@ -119,9 +124,10 @@ const movieInformation = (movieDetail) => {
             </figure>
             <div class="media-content">
                 <div class="content">
-                    <h1>${movieDetail.Title}</h1>
-                    <h4>${movieDetail.Genre}</h4>
+                    <h2>${movieDetail.Title}</h2>
+                    <h5>${movieDetail.Genre}</h5>
                     <p>${movieDetail.Plot}</p>
+                    <p>Director: ${movieDetail.Director}, ${movieDetail.Released}, ${movieDetail.Runtime}</p>
                 </div>
             </div>
         </article>
@@ -137,10 +143,6 @@ const movieInformation = (movieDetail) => {
             <p class="title">${movieDetail.BoxOffice}</p>
             <p class="subtitle">Box Office</p>
         </article>
-        <article class="notification is-warning">
-            <p class="title">${movieDetail.Director}</p>
-            <p class="subtitle">Director</p>
-        </article>
         <article data-value="${metascore}" class="notification is-warning">
             <p class="title">${movieDetail.Metascore}</p>
             <p class="subtitle">Metascore</p>
@@ -149,23 +151,21 @@ const movieInformation = (movieDetail) => {
             <p class="title">${movieDetail.imdbRating}</p>
             <p class="subtitle">IMDB Ratings</p>
         </article>
-        <article class="notification is-warning">
-            <p class="title">${movieDetail.Ratings[0].Source}: ${movieDetail.Ratings[0].Value} </p>
-            <p class="title">${movieDetail.Ratings[1].Source}: ${movieDetail.Ratings[1].Value} </p>
-            <p class="title">${movieDetail.Ratings[2].Source}: ${movieDetail.Ratings[2].Value} </p>
-            <p class="subtitle">Ratings</p>
+        <article data-value="${internetDatabase}" class="notification is-warning">
+            <p class="title">${movieDetail.Ratings[0].Value} </p>
+            <p class="subtitle">${movieDetail.Ratings[0].Source}</p>
+        </article>
+        <article data-value="${rottenTomatoes}" class="notification is-warning">
+            <p class="title">${movieDetail.Ratings[1].Value}</p>
+            <p class="subtitle">${movieDetail.Ratings[1].Source}</p>
+        </article>
+        <article data-value="${metaCritic}" class="notification is-warning">
+            <p class="title">${movieDetail.Ratings[2].Value}</p>
+            <p class="subtitle">${movieDetail.Ratings[2].Source}</p>
         </article>
         <article data-value="${imdbVotes}" class="notification is-warning">
             <p class="title">${movieDetail.imdbVotes}</p>
             <p class="subtitle">IMDB Votes</p>
-        </article>
-        <article class="notification is-warning">
-            <p class="title">${movieDetail.Released}</p>
-            <p class="subtitle">Released date</p>
-        </article>
-        <article class="notification is-warning">
-            <p class="title">${movieDetail.Runtime}</p>
-            <p class="subtitle">Runtime</p>
         </article>
     `;
 }
