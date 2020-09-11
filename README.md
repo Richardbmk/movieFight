@@ -14,4 +14,4 @@ A simple Movie comparison, to see wich movie is better. To do this I use OMDb AP
 Check the simple app clicking [here](https://richardbmk.github.io/movieFight/).
 
 
-![](moviefight.PNG#center)
+![](moviefight.JPG)
