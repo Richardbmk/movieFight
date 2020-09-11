@@ -1,8 +1,8 @@
-# Movie Fight with JS ES6
+# Movie Fight with JS
 
 A simple Movie comparison, to see wich movie is better. To do this I use OMDb API. 
 
-##### In this project I focus on:
+##### In this project I learn about:
 * To use OMDb API
 * Fetch all the data I need from an API and redet in the browser. 
 * Reduce and forEach method
