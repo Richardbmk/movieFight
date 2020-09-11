@@ -10,8 +10,9 @@ A simple Movie comparison, to see wich movie is better. To do this I use OMDb AP
 * Regex
 * axios library for access the API
 * Use async and await properly
+* Host the project on AWS S3 buckets (Github gh-pages, looks like it doesn't support axios library)
 
-Check the simple app clicking [here](https://richardbmk.github.io/movieFight/).
+Check the simple app clicking [here](http://moviefightapp.s3-website-us-east-1.amazonaws.com/).
 
 
-![](moviefight.PNG#center)
+![](moviefight.JPG)
